@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.obd.model.OBDResponse;
+import com.obd.model.ObdData;
 import com.obd.service.OBDService;
 
 @RestController
@@ -19,6 +20,11 @@ public class PidController {
 	public OBDResponse getData(@PathVariable("pid")String pid)
 	{
 		return obdserv.getsnapshot(pid);
+	}
+	@RequestMapping(method=RequestMethod.GET,path="/infoall")
+	public ObdData getAllData()
+	{
+		return obdserv.getData();
 	}
 
 }
